@@ -128,6 +128,18 @@ NETLIFY_SITE_ID=your-site-id
 
 ---
 
+## Common Issues & Solutions
+
+| 문제 | 원인 | 해결 |
+|------|------|------|
+| MCP 연결 실패 | OAuth 토큰 만료 | `/mcp` 실행 → 재인증 |
+| localhost 접근 불가 | 격리된 VM 환경 | Netlify 프리뷰 URL 사용 |
+| stdio MCP 설치 시도 | 샌드박스 제한 | HTTP MCP만 가능 (`.mcp.json`) |
+| 환경변수 누락 | 세션에 미설정 | 환경 선택기 → 환경변수 추가 |
+| 플러그인 설치 실패 | 네트워크/권한 문제 | `npx claude plugins install <name>` |
+
+---
+
 ## Architecture
 
 ```
@@ -183,3 +195,16 @@ Open (인증 불필요):
 2. 프리뷰 URL: `https://deploy-preview-{PR#}--{site}.netlify.app`
 3. Claude가 WebFetch로 HTML 확인 가능
 4. 시각적 확인은 유저가 직접 수행
+
+---
+
+## Debugging Tips
+
+| 문제 | 명령어 |
+|------|--------|
+| 세션 상태 확인 | `cat .claude/session-status.log` |
+| MCP 상태 확인 | `/mcp` |
+| 환경변수 확인 | `/check-env` 또는 `env \| grep NETLIFY` |
+| 검증 재실행 | `/verify` |
+| Netlify 빌드 로그 | Netlify Dashboard → Deploys → 해당 deploy 클릭 |
+| 프리뷰 URL 테스트 | `WebFetch`로 HTML 응답 확인 |
