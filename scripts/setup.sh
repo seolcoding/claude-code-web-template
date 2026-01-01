@@ -72,38 +72,46 @@ if [ ! -f "$PLUGINS_MARKER" ]; then
     echo ""
     echo "🔌 Installing default plugins (first session)..."
 
-    # Install claude-plugins-official (Claude plugin system)
-    echo "   📦 Installing claude-plugins-official..."
-    if claude plugin add anthropics/claude-plugins-official 2>/dev/null; then
-        echo "   ✅ claude-plugins-official installed"
-    else
-        echo "   ⚠️  claude-plugins-official: install manually with 'claude plugin add anthropics/claude-plugins-official'"
-    fi
+    # Add marketplace first
+    echo "   📦 Adding claude-plugins-official marketplace..."
+    claude plugin marketplace add anthropics/claude-plugins-official 2>/dev/null || true
 
-    # Install SuperClaude Framework (pipx + superclaude install)
-    echo "   📦 Installing SuperClaude Framework..."
-    if command -v pipx &> /dev/null; then
-        if pipx install superclaude 2>/dev/null && superclaude install 2>/dev/null; then
-            echo "   ✅ SuperClaude Framework installed (30 slash commands)"
+    # Web-compatible plugins to install
+    PLUGINS=(
+        # Development
+        "feature-dev"
+        "frontend-design"
+        "agent-sdk-dev"
+        "plugin-dev"
+        "greptile"
+        # Productivity
+        "hookify"
+        "commit-commands"
+        "pr-review-toolkit"
+        "code-review"
+        "security-guidance"
+        # Integrations (MCP-based)
+        "github"
+        "Notion"
+        "slack"
+        "supabase"
+        "vercel"
+        "figma"
+    )
+
+    echo "   📦 Installing ${#PLUGINS[@]} plugins..."
+    for plugin in "${PLUGINS[@]}"; do
+        if claude plugin install "${plugin}@claude-plugins-official" 2>/dev/null; then
+            echo "   ✅ $plugin"
         else
-            echo "   ⚠️  SuperClaude: install manually with 'pipx install superclaude && superclaude install'"
+            echo "   ⚠️  $plugin (install manually)"
         fi
-    else
-        # Try with pip if pipx not available
-        if pip install --user superclaude 2>/dev/null && superclaude install 2>/dev/null; then
-            echo "   ✅ SuperClaude Framework installed (30 slash commands)"
-        else
-            echo "   ⚠️  SuperClaude: install pipx first, then 'pipx install superclaude && superclaude install'"
-        fi
-    fi
+    done
 
     # Create marker file
     mkdir -p .claude
     echo "installed=$(date -Iseconds)" > "$PLUGINS_MARKER"
-    echo ""
-    echo "💡 To remove default plugins:"
-    echo "   claude plugin remove anthropics/claude-plugins-official"
-    echo "   pipx uninstall superclaude"
+    echo "plugins=${PLUGINS[*]}" >> "$PLUGINS_MARKER"
     echo ""
 else
     echo ""
