@@ -6,7 +6,11 @@
  */
 
 import { readFileSync } from "fs";
-import { join } from "path";
+import { join, dirname } from "path";
+import { fileURLToPath } from "url";
+
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = dirname(__filename);
 
 interface EnvVarDef {
   name: string;
@@ -27,9 +31,9 @@ interface Integration {
 }
 
 interface IntegrationsData {
-  mcpServers: Integration[];
-  skills: Integration[];
-  plugins: Integration[];
+  mcpServers: Record<string, Integration[]>;
+  skills: Record<string, Integration[]>;
+  plugins: Record<string, Integration[]>;
 }
 
 function loadIntegrations(): IntegrationsData {
@@ -38,14 +42,18 @@ function loadIntegrations(): IntegrationsData {
   return JSON.parse(content);
 }
 
+function flattenCategory(category: Record<string, Integration[]>): Integration[] {
+  return Object.values(category).flat();
+}
+
 function findIntegration(id: string): Integration | null {
   const data = loadIntegrations();
 
-  // Search in all categories
+  // Flatten all nested arrays
   const allIntegrations = [
-    ...data.mcpServers,
-    ...data.skills,
-    ...data.plugins,
+    ...flattenCategory(data.mcpServers),
+    ...flattenCategory(data.skills),
+    ...flattenCategory(data.plugins),
   ];
 
   return (
@@ -64,11 +72,11 @@ function checkIntegrationEnv(integrationId: string): void {
     console.log("\nAvailable integrations:");
     const data = loadIntegrations();
     console.log("\nMCP Servers:");
-    data.mcpServers.forEach((m) => console.log(`  - ${m.id}: ${m.name}`));
+    flattenCategory(data.mcpServers).forEach((m) => console.log(`  - ${m.id}: ${m.name}`));
     console.log("\nSkills:");
-    data.skills.forEach((s) => console.log(`  - ${s.id}: ${s.name}`));
+    flattenCategory(data.skills).forEach((s) => console.log(`  - ${s.id}: ${s.name}`));
     console.log("\nPlugins:");
-    data.plugins.forEach((p) => console.log(`  - ${p.id}: ${p.name}`));
+    flattenCategory(data.plugins).forEach((p) => console.log(`  - ${p.id}: ${p.name}`));
     process.exit(1);
   }
 
