@@ -1,0 +1,26 @@
+{
+  "name": "claude-code-web-template",
+  "version": "0.1.0",
+  "description": "Template for web-only Claude Code development with auto-preview deployment",
+  "type": "module",
+  "scripts": {
+    "check-env": "npx tsx scripts/check-env.ts",
+    "dev": "echo 'Run /init-project <framework> first to set up your project'",
+    "build": "echo 'Run /init-project <framework> first to set up your project'",
+    "preview": "echo 'Use Netlify preview URL - localhost not available in web Claude Code'"
+  },
+  "devDependencies": {
+    "tsx": "^4.19.0",
+    "typescript": "^5.5.0"
+  },
+  "engines": {
+    "node": ">=20.0.0"
+  },
+  "keywords": [
+    "claude-code",
+    "web",
+    "template",
+    "netlify"
+  ],
+  "license": "MIT"
+}

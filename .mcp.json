@@ -1,0 +1,41 @@
+{
+  "$schema": "https://anthropic.com/schemas/mcp.json",
+  "_comment": "HTTP MCP servers only - stdio not supported in web Claude Code",
+  "mcpServers": {
+    "github": {
+      "type": "http",
+      "url": "https://api.githubcopilot.com/mcp/",
+      "note": "OAuth via /mcp command"
+    },
+    "figma": {
+      "type": "http",
+      "url": "https://mcp.figma.com/mcp",
+      "note": "OAuth via /mcp command"
+    },
+    "netlify": {
+      "type": "http",
+      "url": "https://netlify-mcp.netlify.app/mcp",
+      "note": "OAuth via /mcp command"
+    },
+    "notion": {
+      "type": "http",
+      "url": "https://mcp.notion.com/sse",
+      "note": "OAuth via /mcp command"
+    },
+    "exa-search": {
+      "type": "http",
+      "url": "https://mcp.exa.ai/mcp",
+      "note": "Open - no auth required"
+    },
+    "aws-docs": {
+      "type": "http",
+      "url": "https://knowledge-mcp.global.api.aws",
+      "note": "Open - no auth required"
+    },
+    "huggingface": {
+      "type": "http",
+      "url": "https://hf.co/mcp",
+      "note": "Open - no auth required"
+    }
+  }
+}

@@ -1,0 +1,403 @@
+{
+  "$schema": "./integrations.schema.json",
+  "_meta": {
+    "version": "1.1.0",
+    "lastUpdated": "2025-01-01",
+    "source": "Verified from official docs and awesome-remote-mcp-servers"
+  },
+  "mcpServers": {
+    "tier1_essential": [
+      {
+        "id": "github",
+        "name": "GitHub",
+        "type": "http",
+        "url": "https://api.githubcopilot.com/mcp/",
+        "description": "GitHub integration for issues, PRs, code search",
+        "authType": "oauth",
+        "webCompatible": true
+      },
+      {
+        "id": "figma",
+        "name": "Figma",
+        "type": "http",
+        "url": "https://mcp.figma.com/mcp",
+        "description": "Design to code, component extraction",
+        "authType": "oauth",
+        "webCompatible": true
+      },
+      {
+        "id": "netlify",
+        "name": "Netlify",
+        "type": "http",
+        "url": "https://netlify-mcp.netlify.app/mcp",
+        "description": "Deployment and preview management",
+        "authType": "oauth",
+        "webCompatible": true
+      }
+    ],
+    "tier2_docs_search": [
+      {
+        "id": "exa-search",
+        "name": "Exa Search",
+        "type": "http",
+        "url": "https://mcp.exa.ai/mcp",
+        "description": "AI-powered web search",
+        "authType": "open",
+        "webCompatible": true
+      },
+      {
+        "id": "aws-docs",
+        "name": "AWS Knowledge",
+        "type": "http",
+        "url": "https://knowledge-mcp.global.api.aws",
+        "description": "AWS documentation and best practices",
+        "authType": "open",
+        "webCompatible": true
+      },
+      {
+        "id": "huggingface",
+        "name": "Hugging Face",
+        "type": "http",
+        "url": "https://hf.co/mcp",
+        "description": "ML models and datasets documentation",
+        "authType": "open",
+        "webCompatible": true
+      },
+      {
+        "id": "cloudflare-docs",
+        "name": "Cloudflare Docs",
+        "type": "http",
+        "url": "https://docs.mcp.cloudflare.com/sse",
+        "description": "Cloudflare documentation",
+        "authType": "open",
+        "webCompatible": true
+      },
+      {
+        "id": "astro-docs",
+        "name": "Astro Docs",
+        "type": "http",
+        "url": "https://mcp.docs.astro.build/mcp",
+        "description": "Astro framework documentation",
+        "authType": "open",
+        "webCompatible": true
+      },
+      {
+        "id": "stackoverflow",
+        "name": "Stack Overflow",
+        "type": "http",
+        "url": "https://mcp.stackoverflow.com",
+        "description": "Developer Q&A search",
+        "authType": "oauth",
+        "webCompatible": true
+      }
+    ],
+    "tier3_productivity": [
+      {
+        "id": "notion",
+        "name": "Notion",
+        "type": "http",
+        "url": "https://mcp.notion.com/sse",
+        "description": "Documentation and knowledge base",
+        "authType": "oauth",
+        "webCompatible": true
+      },
+      {
+        "id": "linear",
+        "name": "Linear",
+        "type": "http",
+        "url": "https://mcp.linear.app/sse",
+        "description": "Issue tracking",
+        "authType": "oauth",
+        "webCompatible": true
+      },
+      {
+        "id": "asana",
+        "name": "Asana",
+        "type": "http",
+        "url": "https://mcp.asana.com/sse",
+        "description": "Project management",
+        "authType": "oauth",
+        "webCompatible": true
+      },
+      {
+        "id": "monday",
+        "name": "monday.com",
+        "type": "http",
+        "url": "https://mcp.monday.com/sse",
+        "description": "Work management",
+        "authType": "oauth",
+        "webCompatible": true
+      }
+    ],
+    "tier4_infrastructure": [
+      {
+        "id": "vercel",
+        "name": "Vercel",
+        "type": "http",
+        "url": "https://mcp.vercel.com/",
+        "description": "Deployment platform",
+        "authType": "oauth",
+        "webCompatible": true
+      },
+      {
+        "id": "supabase",
+        "name": "Supabase",
+        "type": "http",
+        "url": "https://mcp.supabase.com/mcp",
+        "description": "Backend as a service",
+        "authType": "oauth",
+        "webCompatible": true
+      },
+      {
+        "id": "neon",
+        "name": "Neon",
+        "type": "http",
+        "url": "https://mcp.neon.tech/mcp",
+        "description": "Serverless Postgres",
+        "authType": "oauth",
+        "webCompatible": true
+      },
+      {
+        "id": "sentry",
+        "name": "Sentry",
+        "type": "http",
+        "url": "https://mcp.sentry.dev/sse",
+        "description": "Error monitoring",
+        "authType": "oauth",
+        "webCompatible": true
+      },
+      {
+        "id": "cloudflare-workers",
+        "name": "Cloudflare Workers",
+        "type": "http",
+        "url": "https://bindings.mcp.cloudflare.com/sse",
+        "description": "Edge computing",
+        "authType": "oauth",
+        "webCompatible": true
+      }
+    ],
+    "tier5_browser_automation": [
+      {
+        "id": "browserbase",
+        "name": "Browserbase",
+        "type": "http",
+        "url": "https://mcp.browserbase.com/sse",
+        "description": "Cloud browser automation - can self-host or use hosted service",
+        "authType": "api_key",
+        "envVars": ["BROWSERBASE_API_KEY", "BROWSERBASE_PROJECT_ID"],
+        "webCompatible": true,
+        "note": "Supports HTTP transport for web Claude Code",
+        "source": "https://github.com/browserbase/mcp-server-browserbase"
+      },
+      {
+        "id": "browserless",
+        "name": "Browserless",
+        "type": "http",
+        "url": "SELF_HOSTED_URL",
+        "description": "Self-hosted headless Chrome - deploy your own instance",
+        "authType": "api_key",
+        "webCompatible": true,
+        "note": "Self-host required, then expose as HTTP MCP",
+        "source": "https://github.com/browserless/browserless"
+      }
+    ],
+    "tier6_design": [
+      {
+        "id": "canva",
+        "name": "Canva",
+        "type": "http",
+        "url": "https://mcp.canva.com/mcp",
+        "description": "Design creation",
+        "authType": "oauth",
+        "webCompatible": true
+      },
+      {
+        "id": "webflow",
+        "name": "Webflow",
+        "type": "http",
+        "url": "https://mcp.webflow.com/sse",
+        "description": "Visual web builder",
+        "authType": "oauth",
+        "webCompatible": true
+      },
+      {
+        "id": "wix",
+        "name": "Wix",
+        "type": "http",
+        "url": "https://mcp.wix.com/sse",
+        "description": "Website builder",
+        "authType": "oauth",
+        "webCompatible": true
+      }
+    ],
+    "local_only": [
+      {
+        "id": "chrome-devtools",
+        "name": "Chrome DevTools",
+        "type": "stdio",
+        "command": "npx -y chrome-devtools-mcp@latest",
+        "cliCommand": "claude mcp add chrome-devtools -- npx chrome-devtools-mcp@latest",
+        "description": "Chrome DevTools debugging - DOM inspection, console, network, performance (REQUIRES LOCAL CLI)",
+        "authType": "none",
+        "webCompatible": false,
+        "localOnly": true,
+        "alternative": "Use Netlify preview URLs for visual testing in web",
+        "source": "https://github.com/ChromeDevTools/chrome-devtools-mcp"
+      },
+      {
+        "id": "context7",
+        "name": "Context7",
+        "type": "stdio",
+        "command": "npx -y @upstash/context7-mcp@latest",
+        "description": "Library documentation (REQUIRES LOCAL CLI)",
+        "authType": "none",
+        "webCompatible": false,
+        "localOnly": true,
+        "alternative": "Use exa-search + aws-docs instead"
+      },
+      {
+        "id": "puppeteer",
+        "name": "Puppeteer",
+        "type": "stdio",
+        "command": "npx -y @anthropic-ai/puppeteer-mcp",
+        "description": "Browser automation (REQUIRES LOCAL CLI)",
+        "authType": "none",
+        "webCompatible": false,
+        "localOnly": true,
+        "alternative": "Use chrome-devtools instead"
+      },
+      {
+        "id": "postgres",
+        "name": "PostgreSQL",
+        "type": "stdio",
+        "command": "npx -y @bytebase/dbhub",
+        "description": "Database queries (REQUIRES LOCAL CLI)",
+        "authType": "token",
+        "webCompatible": false,
+        "localOnly": true,
+        "alternative": "Use neon or supabase instead"
+      }
+    ]
+  },
+  "skills": {
+    "official": [
+      {
+        "id": "pdf",
+        "name": "PDF Skill",
+        "source": "anthropics/skills",
+        "description": "Extract and manipulate PDF documents",
+        "webCompatible": true
+      },
+      {
+        "id": "frontend-design",
+        "name": "Frontend Design",
+        "source": "claude-plugins-official",
+        "description": "Create production-grade frontend interfaces",
+        "webCompatible": true
+      },
+      {
+        "id": "feature-dev",
+        "name": "Feature Development",
+        "source": "claude-plugins-official",
+        "description": "Guided feature development workflow",
+        "webCompatible": true
+      }
+    ],
+    "local_only": [
+      {
+        "id": "mcp-builder",
+        "name": "MCP Builder",
+        "source": "anthropics/skills",
+        "description": "Create custom MCP servers (REQUIRES LOCAL CLI)",
+        "webCompatible": false,
+        "localOnly": true
+      },
+      {
+        "id": "webapp-testing",
+        "name": "Webapp Testing",
+        "source": "anthropics/skills",
+        "description": "Test with Playwright (REQUIRES LOCAL CLI)",
+        "webCompatible": false,
+        "localOnly": true
+      }
+    ]
+  },
+  "plugins": {
+    "default_installed": [
+      {
+        "id": "claude-plugins-official",
+        "name": "Claude Plugins Official",
+        "source": "anthropics/claude-plugins-official",
+        "installCommand": "claude plugin add anthropics/claude-plugins-official",
+        "description": "Official Anthropic plugins: hookify, vercel, feature-dev, frontend-design, ralph-wiggum",
+        "webCompatible": true,
+        "installedByDefault": true
+      },
+      {
+        "id": "superclaude",
+        "name": "SuperClaude Framework",
+        "source": "SuperClaude-Org/SuperClaude_Framework",
+        "installCommand": "claude plugin add SuperClaude-Org/SuperClaude_Framework",
+        "description": "Advanced workflow commands: /sc:pm, /sc:task, /sc:git, /sc:research, /sc:implement, etc.",
+        "webCompatible": true,
+        "installedByDefault": true
+      }
+    ],
+    "web_compatible": [
+      {
+        "id": "hookify",
+        "name": "Hookify",
+        "source": "claude-plugins-official",
+        "description": "Create hooks from conversation patterns",
+        "webCompatible": true
+      },
+      {
+        "id": "vercel",
+        "name": "Vercel Plugin",
+        "source": "claude-plugins-official",
+        "description": "Deploy to Vercel",
+        "webCompatible": true
+      },
+      {
+        "id": "feature-dev",
+        "name": "Feature Development",
+        "source": "claude-plugins-official",
+        "description": "Guided feature development workflow",
+        "webCompatible": true
+      },
+      {
+        "id": "frontend-design",
+        "name": "Frontend Design",
+        "source": "claude-plugins-official",
+        "description": "Create production-grade frontend interfaces",
+        "webCompatible": true
+      }
+    ],
+    "local_only": [
+      {
+        "id": "ralph-wiggum",
+        "name": "Ralph Wiggum",
+        "source": "claude-plugins-official",
+        "description": "Autonomous loops (REQUIRES LOCAL CLI - uses Stop hook)",
+        "webCompatible": false,
+        "localOnly": true
+      },
+      {
+        "id": "serena",
+        "name": "Serena",
+        "source": "claude-plugins-official",
+        "description": "LSP integration (REQUIRES LOCAL CLI - stdio)",
+        "webCompatible": false,
+        "localOnly": true
+      },
+      {
+        "id": "pyright-lsp",
+        "name": "Pyright LSP",
+        "source": "claude-plugins-official",
+        "description": "Python LSP (REQUIRES LOCAL CLI - stdio)",
+        "webCompatible": false,
+        "localOnly": true
+      }
+    ]
+  }
+}

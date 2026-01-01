@@ -1,0 +1,36 @@
+# Netlify Configuration
+# Auto-generates preview URLs for each PR/branch
+
+[build]
+  # Default build command (override per framework)
+  command = "npm run build"
+  publish = "dist"
+
+[build.environment]
+  NODE_VERSION = "20"
+
+# Deploy preview for pull requests
+[context.deploy-preview]
+  command = "npm run build"
+
+# Branch deploys
+[context.branch-deploy]
+  command = "npm run build"
+
+# Production
+[context.production]
+  command = "npm run build"
+
+# Redirects for SPA (React, Vue, Svelte)
+[[redirects]]
+  from = "/*"
+  to = "/index.html"
+  status = 200
+
+# Headers
+[[headers]]
+  for = "/*"
+  [headers.values]
+    X-Frame-Options = "DENY"
+    X-Content-Type-Options = "nosniff"
+    Referrer-Policy = "strict-origin-when-cross-origin"
