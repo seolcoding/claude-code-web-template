@@ -337,10 +337,12 @@
         "id": "superclaude",
         "name": "SuperClaude Framework",
         "source": "SuperClaude-Org/SuperClaude_Framework",
-        "installCommand": "claude plugin add SuperClaude-Org/SuperClaude_Framework",
-        "description": "Advanced workflow commands: /sc:pm, /sc:task, /sc:git, /sc:research, /sc:implement, etc.",
+        "installCommand": "pipx install superclaude && superclaude install",
+        "pypi": "superclaude",
+        "description": "30 slash commands: /sc:pm, /sc:task, /sc:git, /sc:research, /sc:implement, /sc:brainstorm, etc.",
         "webCompatible": true,
-        "installedByDefault": true
+        "installedByDefault": true,
+        "note": "Requires pipx or pip. Installs 30 commands + 16 agents + 7 modes"
       }
     ],
     "web_compatible": [

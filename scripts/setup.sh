@@ -72,7 +72,7 @@ if [ ! -f "$PLUGINS_MARKER" ]; then
     echo ""
     echo "🔌 Installing default plugins (first session)..."
 
-    # Install claude-plugins-official
+    # Install claude-plugins-official (Claude plugin system)
     echo "   📦 Installing claude-plugins-official..."
     if claude plugin add anthropics/claude-plugins-official 2>/dev/null; then
         echo "   ✅ claude-plugins-official installed"
@@ -80,12 +80,21 @@ if [ ! -f "$PLUGINS_MARKER" ]; then
         echo "   ⚠️  claude-plugins-official: install manually with 'claude plugin add anthropics/claude-plugins-official'"
     fi
 
-    # Install SuperClaude Framework
+    # Install SuperClaude Framework (pipx + superclaude install)
     echo "   📦 Installing SuperClaude Framework..."
-    if claude plugin add SuperClaude-Org/SuperClaude_Framework 2>/dev/null; then
-        echo "   ✅ SuperClaude Framework installed"
+    if command -v pipx &> /dev/null; then
+        if pipx install superclaude 2>/dev/null && superclaude install 2>/dev/null; then
+            echo "   ✅ SuperClaude Framework installed (30 slash commands)"
+        else
+            echo "   ⚠️  SuperClaude: install manually with 'pipx install superclaude && superclaude install'"
+        fi
     else
-        echo "   ⚠️  SuperClaude: install manually with 'claude plugin add SuperClaude-Org/SuperClaude_Framework'"
+        # Try with pip if pipx not available
+        if pip install --user superclaude 2>/dev/null && superclaude install 2>/dev/null; then
+            echo "   ✅ SuperClaude Framework installed (30 slash commands)"
+        else
+            echo "   ⚠️  SuperClaude: install pipx first, then 'pipx install superclaude && superclaude install'"
+        fi
     fi
 
     # Create marker file
@@ -94,7 +103,7 @@ if [ ! -f "$PLUGINS_MARKER" ]; then
     echo ""
     echo "💡 To remove default plugins:"
     echo "   claude plugin remove anthropics/claude-plugins-official"
-    echo "   claude plugin remove SuperClaude-Org/SuperClaude_Framework"
+    echo "   pipx uninstall superclaude"
     echo ""
 else
     echo ""
