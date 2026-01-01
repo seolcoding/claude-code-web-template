@@ -28,6 +28,7 @@ Thumbs.db
 # Claude Code local settings
 .claude/settings.local.json
 .claude/.plugins_installed
+.claude/session-status.log
 CLAUDE.local.md
 
 # Logs

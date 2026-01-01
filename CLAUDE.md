@@ -2,6 +2,28 @@
 
 This file provides guidance to Claude Code (claude.ai/code) when working with code in this repository.
 
+---
+
+## ⚠️ FIRST ACTION: 세션 상태 확인
+
+**세션 시작 시 반드시 `.claude/session-status.log` 파일을 읽어라.**
+
+이 파일은 SessionStart 훅이 자동 생성하며, 현재 세션에서:
+- ✅ 어떤 기능이 동작하는지
+- ⚠️ 어떤 기능에 문제가 있는지
+- 🔧 어떻게 해결하는지
+
+가 기록되어 있다. 이 정보를 바탕으로 유저에게 현재 상태를 알려주고, 필요한 조치를 안내하라.
+
+```bash
+# 세션 시작 시 항상 실행
+cat .claude/session-status.log
+```
+
+만약 파일이 없으면 `/verify` 명령으로 상태를 확인하라.
+
+---
+
 ## CRITICAL CLAIMS (이 사실들을 항상 기억하라)
 
 이 섹션의 Claims는 검증된 사실입니다. 모든 작업에서 이 제약사항을 준수해야 합니다.
