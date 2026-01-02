@@ -7,8 +7,10 @@ Run verification tests to ensure the template is correctly configured for Web Cl
 1. Run the verification script:
 
 ```bash
-npx tsx scripts/verify-setup.ts
+bun run scripts/verify-setup.ts
 ```
+
+> Note: If bun is not available, use `npx tsx scripts/verify-setup.ts` as fallback.
 
 2. Review the output and report:
    - ✅ Pass: Configuration is correct
